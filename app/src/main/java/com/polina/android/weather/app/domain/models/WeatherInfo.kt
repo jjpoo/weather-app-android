@@ -9,5 +9,7 @@ data class WeatherInfo(
     val pressure: Int,
     val humidity: Int,
     val weatherType: WeatherType,
-    val windSpeed: Double
+    val windSpeed: Double,
+    val description: String,
+    val main: String
 )

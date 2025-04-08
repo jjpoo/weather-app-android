@@ -1,5 +1,6 @@
 package com.polina.android.weather.app.presentation.main.composables
 
+import android.util.Log
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.pager.HorizontalPager
@@ -12,32 +13,38 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.polina.android.weather.app.R
 import com.polina.android.weather.app.presentation.model.City
+import kotlin.math.log
 
 @Composable
 fun CityPager(
     cities: List<City>,
     selectedCity: City,
-    onCitySelected: (City) -> Unit
+    onCitySelected: (City) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val initialPage = cities.indexOfFirst { it.name == selectedCity.name }.takeIf { it >= 0 } ?: 0
-    val contentPadding = PaddingValues(horizontal = 32.dp)
+    val contentPadding = PaddingValues(horizontal = 16.dp)
 
     val pagerState = rememberPagerState(
         initialPage = initialPage,
         pageCount = { cities.size }
     )
 
-    LaunchedEffect(pagerState.currentPage) {
+    LaunchedEffect(pagerState.settledPage) {
         if (pagerState.currentPage >= 0 && pagerState.currentPage < cities.size) {
-            onCitySelected(cities[pagerState.currentPage])
+            Log.e("Pager State", "${pagerState.currentPage}")
+            val newCity = cities[pagerState.settledPage]
+            if (newCity.name != selectedCity.name) {
+                onCitySelected(newCity)
+            }
         }
     }
 
     HorizontalPager(
         state = pagerState,
-        pageSpacing = 16.dp,
+        pageSpacing = 8.dp,
         contentPadding = contentPadding,
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     ) { page ->
         CityCard(
             backgroundImg = painterResource(cities[page].iconRes),
