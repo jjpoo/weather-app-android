@@ -1,6 +1,5 @@
 package com.polina.android.weather.app.presentation.main
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.polina.android.weather.app.domain.usecase.GetCurrentWeatherUseCase
@@ -20,8 +19,8 @@ class MainViewModel @Inject constructor(
 
     private val cities = listOf(
         City("Warsaw", R.drawable.card_1),
-        City("Wroclaw", R.drawable.card_1),
-        City("Cracow", R.drawable.card_1)
+        City("Wroclaw", R.drawable.card_2),
+        City("Cracow", R.drawable.card_3)
     )
 
     private val _state = MutableStateFlow<MainUiState>(MainUiState.Loading)
