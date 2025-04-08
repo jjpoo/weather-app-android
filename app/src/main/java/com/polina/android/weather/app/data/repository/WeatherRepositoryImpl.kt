@@ -1,5 +1,6 @@
 package com.polina.android.weather.app.data.repository
 
+import android.util.Log
 import com.polina.android.weather.app.data.mappers.toDailyWeatherInfo
 import com.polina.android.weather.app.data.mappers.toFiveDaysForecast
 import com.polina.android.weather.app.data.api.WeatherApi
@@ -14,7 +15,6 @@ class WeatherRepositoryImpl @Inject constructor(
     private val apiKey: String
 ) : WeatherRepository {
 
-//    private val apiKey: String = "ec4d5876245ec98d475b5312154f4247"
     private val units: String = "metric"
 
     override suspend fun getWeatherForToday(city: String): Result<WeatherInfo> {
