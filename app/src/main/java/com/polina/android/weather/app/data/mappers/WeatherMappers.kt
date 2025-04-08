@@ -18,13 +18,15 @@ fun WeatherResponse.toDailyWeatherInfo(): WeatherInfo {
         temperature = main.temp,
         feelsLike = main.feelsLike,
         minTemperature = main.minTemp,
-        maxTemperature = main.maxTemt,
+        maxTemperature = main.maxTemp,
         humidity = main.humidity,
         weatherType = WeatherType.fromResponseWeatherType(
             weather.firstOrNull()?.main ?: ""
         ),
         windSpeed = wind.speed,
-        pressure = main.pressure
+        pressure = main.pressure,
+        description = weather.firstOrNull()?.description ?: "Just a day",
+        main = weather.firstOrNull()?.main ?: "Just a day"
     )
 }
 
@@ -35,7 +37,7 @@ fun WeatherForecastResponse.toFiveDaysForecast(
     val groupedForecasts = groupedForecastsByDay(this.list)
     val dailyForecasts = groupedForecasts.map { (date, forecasts) ->
         val minTemp = forecasts.minOfOrNull { it.main.minTemp } ?: 0.0
-        val maxTemp = forecasts.maxOfOrNull { it.main.maxTemt } ?: 0.0
+        val maxTemp = forecasts.maxOfOrNull { it.main.maxTemp } ?: 0.0
         val middayForecast = forecasts.minByOrNull {
             val hour = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
                 .parse(it.dtTxt)?.let { date ->
