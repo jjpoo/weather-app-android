@@ -9,6 +9,7 @@ sealed class MainUiState {
     data class Success(
         val weatherInfo: WeatherInfo,
         val selectedCity: City,
-        val availableCities: List<City>
+        val availableCities: List<City>,
+        val weatherTitle: String = "Weather Forecast App"
     ) : MainUiState()
 }

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">android-weather-app</string>
+    <string name="details">Details</string>
 </resources>
