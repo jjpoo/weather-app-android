@@ -1,5 +1,6 @@
 package com.polina.android.weather.app.data.di
 
+import com.polina.android.weather.app.BuildConfig
 import com.polina.android.weather.app.data.api.WeatherApi
 import com.polina.android.weather.app.data.repository.WeatherRepositoryImpl
 import com.polina.android.weather.app.domain.repository.WeatherRepository
@@ -11,13 +12,12 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class RepositoryModule {
+class RepositoryModule {
 
     @Provides
     @Singleton
     fun provideApiKey(): String {
-        return ""
-//        return BuildConfig.WEATHER_API_KEY
+        return BuildConfig.WEATHER_API_KEY
     }
 
     @Provides
