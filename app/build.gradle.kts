@@ -1,3 +1,14 @@
+import java.lang.System.getProperty
+import java.util.Properties
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.reader().use { reader ->
+        localProperties.load(reader)
+    }
+}
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -22,11 +33,30 @@ android {
     }
 
     buildTypes {
+        debug {
+            debug {
+                buildConfigField(
+                    "String",
+                    "WEATHER_API_KEY",
+                    "\"${localProperties.getProperty("weather_api_key", "")}\""
+                )
+            }
+            buildConfigField(
+                "String",
+                "WEATHER_API_KEY",
+                "\"${localProperties.getProperty("weather_api_key", "")}\""
+            )
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
+            )
+            buildConfigField(
+                "String",
+                "WEATHER_API_KEY",
+                "${getProperty("weather_api_key", "")}"
             )
         }
     }
@@ -39,6 +69,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     packaging {
         resources {
@@ -64,6 +95,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.androidx.navigation.compose)
 
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
