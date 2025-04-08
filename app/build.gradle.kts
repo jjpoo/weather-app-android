@@ -65,13 +65,15 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    ksp(libs.hilt.android)
     implementation(libs.hilt.android)
-    implementation(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
+    ksp(libs.hilt.compiler)
 
     implementation(libs.retrofit.android)
+    implementation(libs.logging.interceptor)
     implementation(libs.converter.moshi)
+    implementation(libs.moshi.kotlin)
+    ksp(libs.moshi.kotlin.codegen)
 
     implementation(libs.coil.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
