@@ -13,7 +13,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.polina.android.weather.app.R
 import com.polina.android.weather.app.presentation.model.City
-import kotlin.math.log
 
 @Composable
 fun CityPager(

@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.polina.android.weather.app.presentation.theme.DeepBlue
+import com.polina.android.weather.app.utils.theme.DeepBlue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

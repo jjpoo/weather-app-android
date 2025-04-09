@@ -1,4 +1,4 @@
-package com.polina.android.weather.app.presentation.theme
+package com.polina.android.weather.app.utils.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

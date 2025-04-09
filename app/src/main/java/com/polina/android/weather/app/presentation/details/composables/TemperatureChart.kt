@@ -21,8 +21,8 @@ import com.polina.android.weather.app.domain.models.DailyWeatherForecast
 import com.polina.android.weather.app.domain.models.FiveDaysForecast
 import com.polina.android.weather.app.domain.models.WeatherType
 import com.polina.android.weather.app.presentation.model.TemperatureUnit
-import com.polina.android.weather.app.presentation.theme.DarkBlue
-import com.polina.android.weather.app.presentation.theme.DeepBlue
+import com.polina.android.weather.app.utils.theme.DarkBlue
+import com.polina.android.weather.app.utils.theme.DeepBlue
 import com.polina.android.weather.app.utils.getDayOfWeek
 import java.util.Calendar
 import kotlin.math.roundToInt
