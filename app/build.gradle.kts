@@ -34,13 +34,6 @@ android {
 
     buildTypes {
         debug {
-            debug {
-                buildConfigField(
-                    "String",
-                    "WEATHER_API_KEY",
-                    "\"${localProperties.getProperty("weather_api_key", "")}\""
-                )
-            }
             buildConfigField(
                 "String",
                 "WEATHER_API_KEY",
@@ -56,7 +49,7 @@ android {
             buildConfigField(
                 "String",
                 "WEATHER_API_KEY",
-                "${getProperty("weather_api_key", "")}"
+                "\"${getProperty("weather_api_key", "")}\""
             )
         }
     }
