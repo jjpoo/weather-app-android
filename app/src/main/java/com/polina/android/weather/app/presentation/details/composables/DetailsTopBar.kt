@@ -1,7 +1,11 @@
 package com.polina.android.weather.app.presentation.details.composables
 
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -9,6 +13,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -59,7 +64,13 @@ fun DetailsTopBar(
                 Switch(
                     checked = temperatureUnit == TemperatureUnit.FAHRENHEIT,
                     onCheckedChange = { onToggleUnit() },
-                    modifier = Modifier.padding(horizontal = 8.dp)
+                    modifier = Modifier.padding(horizontal = 8.dp),
+                    colors = SwitchDefaults.colors(
+                        checkedThumbColor = Color.White,
+                        checkedTrackColor = DeepBlue.copy(alpha = 0.7f),
+                        uncheckedThumbColor = Color.White,
+                        uncheckedTrackColor = DeepBlue.copy(alpha = 0.7f),
+                    )
                 )
                 Text(
                     text = "°F",
