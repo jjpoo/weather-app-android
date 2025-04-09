@@ -1,7 +1,7 @@
 package com.polina.android.weather.app.presentation.main.composables
 
 import androidx.compose.runtime.Composable
-import com.polina.android.weather.app.presentation.main.MainUiState
+import com.polina.android.weather.app.presentation.main.state.MainUiState
 import com.polina.android.weather.app.presentation.model.City
 import com.polina.android.weather.app.utils.composables.ErrorScreen
 import com.polina.android.weather.app.utils.composables.LoadingScreen

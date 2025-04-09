@@ -13,7 +13,7 @@ import com.polina.android.weather.app.presentation.theme.DeepBlue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopBar(
+fun MainTopBar(
     modifier: Modifier = Modifier,
     title: String
 ) {
@@ -36,7 +36,7 @@ fun TopBar(
 @Composable
 @Preview(showBackground = true, showSystemUi = true)
 fun TopBarPreview() {
-    TopBar(
+    MainTopBar(
         Modifier, "Sunny day!"
     )
 }

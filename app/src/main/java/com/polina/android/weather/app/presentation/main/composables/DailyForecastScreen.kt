@@ -6,7 +6,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.polina.android.weather.app.domain.models.WeatherInfo
 import com.polina.android.weather.app.presentation.model.City
-import com.polina.android.weather.app.presentation.theme.DarkBlue
 
 @Composable
 fun DailyForecastScreen(
@@ -19,10 +18,10 @@ fun DailyForecastScreen(
 ) {
     Scaffold(
         topBar = {
-            TopBar(title = header)
+            MainTopBar(title = header)
         },
         bottomBar = {
-            BottomBar(onDetailsClick)
+            MainBottomBar(onDetailsClick)
         },
         content = {
             MainContent(

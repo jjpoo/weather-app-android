@@ -1,7 +1,8 @@
-package com.polina.android.weather.app.presentation.main
+package com.polina.android.weather.app.presentation.main.state
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.polina.android.weather.app.R
 import com.polina.android.weather.app.domain.usecase.GetCurrentWeatherUseCase
 import com.polina.android.weather.app.presentation.model.City
 import com.polina.android.weather.app.utils.Result
@@ -10,7 +11,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import com.polina.android.weather.app.R
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
