@@ -11,13 +11,16 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-
 import com.polina.android.weather.app.presentation.model.TemperatureUnit
+import com.polina.android.weather.app.utils.theme.DarkBlue
+import com.polina.android.weather.app.utils.theme.DeepBlue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -29,11 +32,16 @@ fun DetailsTopBar(
 ) {
     TopAppBar(
         title = { "Forecast for $cityName" },
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = DeepBlue,
+            titleContentColor = MaterialTheme.colorScheme.primary,
+        ),
         navigationIcon = {
             IconButton(onClick = onBackPressed) {
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "Back"
+                    contentDescription = "Back",
+                    tint = Color.White
                 )
             }
         }, actions = {
@@ -45,8 +53,8 @@ fun DetailsTopBar(
                     text = "°C",
                     style = MaterialTheme.typography.bodyMedium,
                     color = if (temperatureUnit == TemperatureUnit.CELSIUS)
-                        MaterialTheme.colorScheme.primary else
-                        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                        Color.White else
+                        DarkBlue.copy(alpha = 0.6f)
                 )
                 Switch(
                     checked = temperatureUnit == TemperatureUnit.FAHRENHEIT,
@@ -57,8 +65,8 @@ fun DetailsTopBar(
                     text = "°F",
                     style = MaterialTheme.typography.bodyMedium,
                     color = if (temperatureUnit == TemperatureUnit.FAHRENHEIT)
-                        MaterialTheme.colorScheme.primary else
-                        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                        Color.White else
+                        DarkBlue.copy(alpha = 0.6f)
                 )
             }
         }

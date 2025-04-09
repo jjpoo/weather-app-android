@@ -1,5 +1,6 @@
 package com.polina.android.weather.app.presentation.details.composables
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,9 +13,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.polina.android.weather.app.domain.models.FiveDaysForecast
 import com.polina.android.weather.app.presentation.model.TemperatureUnit
+import com.polina.android.weather.app.utils.theme.DarkBlue
 
 @Composable
 fun DetailsContent(
@@ -26,35 +29,43 @@ fun DetailsContent(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .background(DarkBlue)
     ) {
-        Text(
-            text = "Temperature Trend",
-            style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.padding(bottom = 8.dp)
-        )
-        TemperatureChart(
-            forecast = forecast,
-            temperatureUnit = temperatureUnit,
-            convertTemp = convertTemp,
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .height(200.dp)
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(
-            text = "Daily Forecast",
-            style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.padding(bottom = 8.dp)
-        )
-        LazyColumn(modifier = Modifier.fillMaxWidth()) {
-            items(forecast.dailyForecasts) { dailyForecast ->
-                DailyForecastCard(
-                    forecast = dailyForecast,
-                    temperatureUnit = temperatureUnit,
-                    convertTemp = convertTemp,
-                    modifier = Modifier.padding(vertical = 4.dp)
-                )
+                .fillMaxSize()
+                .padding(16.dp)
+        ) {
+            Text(
+                text = "Temperature",
+                color = Color.White,
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+            TemperatureChart(
+                forecast = forecast,
+                temperatureUnit = temperatureUnit,
+                convertTemp = convertTemp,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                text = "Daily Forecast",
+                color = Color.White,
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+            LazyColumn(modifier = Modifier.fillMaxWidth()) {
+                items(forecast.dailyForecasts) { dailyForecast ->
+                    DailyForecastCard(
+                        forecast = dailyForecast,
+                        temperatureUnit = temperatureUnit,
+                        convertTemp = convertTemp,
+                        modifier = Modifier.padding(vertical = 4.dp)
+                    )
+                }
             }
         }
     }
