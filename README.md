@@ -70,4 +70,4 @@ The app uses the OpenWeatherMap API. To run the app, you'll need to:
 1. Create an account at OpenWeatherMap
 2. Generate an API key
 3. Add the key to your local.properties file:
-4. WEATHER_API_KEY=your_api_key_here
+4. weather_api_key=***your api key here***
