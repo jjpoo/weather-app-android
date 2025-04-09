@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.polina.android.weather.app.R
 import com.polina.android.weather.app.domain.models.WeatherInfo
-import com.polina.android.weather.app.presentation.theme.DarkBlue
+import com.polina.android.weather.app.utils.theme.DarkBlue
 
 @Composable
 fun CurrentWeatherCard(
@@ -34,9 +34,8 @@ fun CurrentWeatherCard(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(10.dp),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
-        ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            containerColor = DarkBlue.copy(alpha = 0.3f)
+        )
     ) {
         Column(
             modifier = Modifier

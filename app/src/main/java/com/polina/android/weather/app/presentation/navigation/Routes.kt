@@ -8,8 +8,4 @@ object Routes {
     fun createDetailsRoute(cityName: String): String {
         return "details_screen/$cityName"
     }
-
-    fun createErrorRoute(errorMessage: String): String {
-        return "error_screen/$errorMessage"
-    }
 }

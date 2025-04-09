@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import kotlin.math.abs
 
 fun WeatherResponse.toDailyWeatherInfo(): WeatherInfo {
     return WeatherInfo(
@@ -43,7 +44,7 @@ fun WeatherForecastResponse.toFiveDaysForecast(
                 .parse(it.dtTxt)?.let { date ->
                     Calendar.getInstance().apply { time = date }.get(Calendar.HOUR_OF_DAY)
                 } ?: 0
-            Math.abs(hour - 12)
+            abs(hour - 12)
         } ?: forecasts.first()
 
         DailyWeatherForecast(
@@ -79,6 +80,7 @@ private fun groupedForecastsByDay(forecasts: List<ForecastItem>): Map<Long, List
             calendar.set(Calendar.MILLISECOND, 0)
             calendar.timeInMillis
         } catch (e: Exception) {
+            e.message
             System.currentTimeMillis()
         }
     }
