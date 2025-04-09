@@ -22,7 +22,7 @@ import com.polina.android.weather.app.R
 import com.polina.android.weather.app.presentation.theme.DeepBlue
 
 @Composable
-fun BottomBar(
+fun MainBottomBar(
     onDetailsClick: () -> Unit
 ) {
     Box(
@@ -54,5 +54,5 @@ fun BottomBar(
 @Preview
 @Composable
 fun BottomPreview() {
-    BottomBar({})
+    MainBottomBar({})
 }

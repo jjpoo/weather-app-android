@@ -6,7 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.runtime.collectAsState
-import com.polina.android.weather.app.presentation.main.MainViewModel
+import com.polina.android.weather.app.presentation.details.state.DetailsViewModel
+import com.polina.android.weather.app.presentation.main.state.MainViewModel
 import com.polina.android.weather.app.presentation.navigation.WeatherNavHost
 import com.polina.android.weather.app.presentation.theme.AndroidweatherappTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     val mainViewModel by viewModels<MainViewModel>()
+    val detailsViewModel by viewModels<DetailsViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,10 +24,14 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             AndroidweatherappTheme {
-                val state = mainViewModel.state.collectAsState()
+                val mainUiState = mainViewModel.state.collectAsState()
+                val detailsUiState = detailsViewModel.state.collectAsState()
+
                 WeatherNavHost(
-                    viewModel = mainViewModel,
-                    state = state.value
+                    mainViewModel = mainViewModel,
+                    detailsViewModel = detailsViewModel,
+                    mainState = mainUiState.value,
+                    detailsState = detailsUiState.value
                 )
             }
         }

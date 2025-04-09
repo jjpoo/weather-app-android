@@ -1,4 +1,4 @@
-package com.polina.android.weather.app.presentation.main
+package com.polina.android.weather.app.presentation.main.state
 
 import com.polina.android.weather.app.domain.models.WeatherInfo
 import com.polina.android.weather.app.presentation.model.City
