@@ -9,7 +9,7 @@ import androidx.compose.runtime.collectAsState
 import com.polina.android.weather.app.presentation.details.state.DetailsViewModel
 import com.polina.android.weather.app.presentation.main.state.MainViewModel
 import com.polina.android.weather.app.presentation.navigation.WeatherNavHost
-import com.polina.android.weather.app.presentation.theme.AndroidweatherappTheme
+import com.polina.android.weather.app.utils.theme.AndroidweatherappTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

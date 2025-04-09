@@ -1,4 +1,4 @@
-package com.polina.android.weather.app.presentation.theme
+package com.polina.android.weather.app.utils.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

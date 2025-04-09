@@ -9,8 +9,8 @@ import com.polina.android.weather.app.domain.models.WeatherInfo
 import com.polina.android.weather.app.domain.models.WeatherType
 import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Locale
 import java.util.Date
+import java.util.Locale
 
 fun WeatherResponse.toDailyWeatherInfo(): WeatherInfo {
     return WeatherInfo(

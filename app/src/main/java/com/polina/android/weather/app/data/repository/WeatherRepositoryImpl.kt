@@ -1,9 +1,8 @@
 package com.polina.android.weather.app.data.repository
 
-import android.util.Log
+import com.polina.android.weather.app.data.api.WeatherApi
 import com.polina.android.weather.app.data.mappers.toDailyWeatherInfo
 import com.polina.android.weather.app.data.mappers.toFiveDaysForecast
-import com.polina.android.weather.app.data.api.WeatherApi
 import com.polina.android.weather.app.domain.models.FiveDaysForecast
 import com.polina.android.weather.app.domain.models.WeatherInfo
 import com.polina.android.weather.app.domain.repository.WeatherRepository

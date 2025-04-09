@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.polina.android.weather.app.R
-import com.polina.android.weather.app.presentation.theme.DeepBlue
+import com.polina.android.weather.app.utils.theme.DeepBlue
 
 @Composable
 fun MainBottomBar(
