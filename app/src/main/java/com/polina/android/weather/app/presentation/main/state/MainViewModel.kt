@@ -31,22 +31,32 @@ class MainViewModel @Inject constructor(
     val selectedCity = _selectedCity.asStateFlow()
 
     init {
-        getWeatherForCurrentCity()
+        getWeatherForCurrentCity(isInitialLoad = true)
     }
 
     fun selectCity(city: City) {
+        val currentState = _state.value
+        if (currentState is MainUiState.Success) {
+
+            _state.value = currentState.copy(
+                selectedCity = city
+            )
+        }
         _selectedCity.value = city
-        getWeatherForCurrentCity()
+        getWeatherForCurrentCity(isInitialLoad = false)
     }
 
     fun retry() {
         _state.value = MainUiState.Loading
-        getWeatherForCurrentCity()
+        getWeatherForCurrentCity(isInitialLoad = false)
     }
 
-    private fun getWeatherForCurrentCity() {
+    private fun getWeatherForCurrentCity(isInitialLoad: Boolean) {
         viewModelScope.launch {
-            _state.value = MainUiState.Loading
+
+            if (isInitialLoad) {
+                _state.value = MainUiState.Loading
+            }
 
             when (val result = getCurrentWeatherUseCase(_selectedCity.value.name)) {
                 is Result.Success -> {

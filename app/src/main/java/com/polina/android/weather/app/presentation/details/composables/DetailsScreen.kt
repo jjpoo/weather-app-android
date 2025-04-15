@@ -1,12 +1,15 @@
 package com.polina.android.weather.app.presentation.details.composables
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import com.polina.android.weather.app.presentation.details.state.WeatherDetailsUiState
 import com.polina.android.weather.app.utils.composables.ErrorScreen
-import com.polina.android.weather.app.utils.composables.LoadingScreen
 
 @Composable
 fun DetailsScreen(
@@ -49,7 +52,11 @@ fun DetailsScreen(
         }
 
         is WeatherDetailsUiState.Loading -> {
-            LoadingScreen()
+            CircularProgressIndicator(
+                modifier = Modifier.size(56.dp),
+                color = Color.Black,
+                strokeWidth = 4.dp
+            )
         }
     }
 }
