@@ -14,10 +14,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
+import com.polina.android.weather.app.R
 import com.polina.android.weather.app.domain.models.FiveDaysForecast
 import com.polina.android.weather.app.presentation.model.TemperatureUnit
-import com.polina.android.weather.app.utils.theme.DarkBlue
 
 @Composable
 fun DetailsContent(
@@ -29,7 +30,7 @@ fun DetailsContent(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(DarkBlue)
+            .background(color = colorResource(R.color.deep_blue))
     ) {
         Column(
             modifier = Modifier

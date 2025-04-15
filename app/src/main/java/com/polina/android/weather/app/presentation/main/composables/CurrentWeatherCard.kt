@@ -18,13 +18,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.polina.android.weather.app.R
 import com.polina.android.weather.app.domain.models.WeatherInfo
-import com.polina.android.weather.app.utils.theme.DarkBlue
 
 @Composable
 fun CurrentWeatherCard(
@@ -34,7 +34,7 @@ fun CurrentWeatherCard(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(10.dp),
         colors = CardDefaults.cardColors(
-            containerColor = DarkBlue.copy(alpha = 0.3f)
+            containerColor = colorResource(R.color.dark_blue).copy(alpha = 0.3f)
         )
     ) {
         Column(
@@ -49,14 +49,14 @@ fun CurrentWeatherCard(
                 style = MaterialTheme.typography.displayLarge,
                 fontWeight = FontWeight.Bold,
                 fontSize = 50.sp,
-                color = DarkBlue
+                color = colorResource(R.color.dark_blue)
             )
             Spacer(modifier = Modifier.height(10.dp))
             Text(
                 text = weatherInfo.main,
                 style = MaterialTheme.typography.headlineSmall,
                 fontSize = 40.sp,
-                color = DarkBlue
+                color = colorResource(R.color.dark_blue)
             )
             Spacer(modifier = Modifier.height(16.dp))
             Row(
@@ -97,7 +97,7 @@ fun WeatherDetailItem(
             text = label,
             style = MaterialTheme.typography.bodyMedium,
             fontSize = 25.sp,
-            color = DarkBlue
+            color = colorResource(R.color.dark_blue)
         )
 
         Spacer(modifier = Modifier.height(2.dp))
@@ -107,7 +107,7 @@ fun WeatherDetailItem(
             style = MaterialTheme.typography.bodyLarge,
             fontWeight = FontWeight.SemiBold,
             fontSize = 20.sp,
-            color = DarkBlue
+            color = colorResource(R.color.dark_blue)
         )
     }
 }

@@ -1,28 +1,28 @@
 package com.polina.android.weather.app.presentation.details.composables
 
-import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.padding
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import android.graphics.Paint
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.OutlinedCard
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.polina.android.weather.app.R
 import com.polina.android.weather.app.domain.models.DailyWeatherForecast
 import com.polina.android.weather.app.domain.models.FiveDaysForecast
 import com.polina.android.weather.app.domain.models.WeatherType
 import com.polina.android.weather.app.presentation.model.TemperatureUnit
-import com.polina.android.weather.app.utils.theme.DarkBlue
-import com.polina.android.weather.app.utils.theme.DeepBlue
 import com.polina.android.weather.app.utils.getDayOfWeek
 import java.util.Calendar
 import kotlin.math.roundToInt
@@ -34,6 +34,8 @@ fun TemperatureChart(
     convertTemp: (Double) -> Double,
     modifier: Modifier = Modifier
 ) {
+    val deepBlue = colorResource(R.color.deep_blue)
+
     OutlinedCard(
         modifier = modifier,
         shape = RoundedCornerShape(2.dp),
@@ -70,7 +72,7 @@ fun TemperatureChart(
                     padding - 25f,
                     y + 5f,
                     Paint().apply {
-                        color = DeepBlue.toArgb()
+                        color = deepBlue.toArgb()
                         textAlign = Paint.Align.RIGHT
                         textSize = 0.sp.toPx()
                     }
@@ -79,7 +81,7 @@ fun TemperatureChart(
                 if (points.size > 1) {
                     for (i in 0 until points.size - 1) {
                         drawLine(
-                            color = DeepBlue,
+                            color = deepBlue,
                             start = points[i],
                             end = points[i + 1],
                             strokeWidth = 2.dp.toPx()
@@ -90,7 +92,7 @@ fun TemperatureChart(
                 if (points.size > 1) {
                     for (i in 0 until points.size - 1) {
                         drawLine(
-                            color = DarkBlue,
+                            color = deepBlue,
                             start = points[i],
                             end = points[i + 1],
                             strokeWidth = 1.dp.toPx()
@@ -102,7 +104,7 @@ fun TemperatureChart(
 
                 points.forEachIndexed { index, point ->
                     drawCircle(
-                        color = DeepBlue,
+                        color = deepBlue,
                         radius = 4.dp.toPx(),
                         center = point
                     )
@@ -111,7 +113,7 @@ fun TemperatureChart(
                         point.x,
                         point.y - 12.dp.toPx(),
                         Paint().apply {
-                            color = DeepBlue.toArgb()
+                            color = deepBlue.toArgb()
                             textAlign = Paint.Align.CENTER
                             textSize = 12.sp.toPx()
                         }
@@ -121,7 +123,7 @@ fun TemperatureChart(
                         point.x,
                         height - 3.dp.toPx(),
                         Paint().apply {
-                            color = DeepBlue.toArgb()
+                            color = deepBlue.toArgb()
                             textAlign = Paint.Align.CENTER
                             textSize = 12.sp.toPx()
                         }

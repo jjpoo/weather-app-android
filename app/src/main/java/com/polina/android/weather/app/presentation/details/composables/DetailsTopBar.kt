@@ -17,11 +17,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.polina.android.weather.app.R
 import com.polina.android.weather.app.presentation.model.TemperatureUnit
-import com.polina.android.weather.app.utils.theme.DarkBlue
-import com.polina.android.weather.app.utils.theme.DeepBlue
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -34,7 +34,7 @@ fun DetailsTopBar(
     TopAppBar(
         title = { "Forecast for $cityName" },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = DeepBlue,
+            containerColor = colorResource(R.color.deep_blue),
             titleContentColor = MaterialTheme.colorScheme.primary,
         ),
         navigationIcon = {
@@ -54,8 +54,8 @@ fun DetailsTopBar(
                     text = "°C",
                     style = MaterialTheme.typography.bodyMedium,
                     color = if (temperatureUnit == TemperatureUnit.CELSIUS)
-                        Color.White else
-                        DarkBlue.copy(alpha = 0.6f)
+                        colorResource(R.color.white) else
+                        colorResource(R.color.dark_blue).copy(alpha = 0.6f)
                 )
                 Switch(
                     checked = temperatureUnit == TemperatureUnit.FAHRENHEIT,
@@ -63,9 +63,9 @@ fun DetailsTopBar(
                     modifier = Modifier.padding(horizontal = 8.dp),
                     colors = SwitchDefaults.colors(
                         checkedThumbColor = Color.White,
-                        checkedTrackColor = DeepBlue.copy(alpha = 0.7f),
+                        checkedTrackColor = colorResource(R.color.deep_blue).copy(alpha = 0.7f),
                         uncheckedThumbColor = Color.White,
-                        uncheckedTrackColor = DeepBlue.copy(alpha = 0.7f),
+                        uncheckedTrackColor = colorResource(R.color.deep_blue).copy(alpha = 0.7f),
                     )
                 )
                 Text(
@@ -73,7 +73,7 @@ fun DetailsTopBar(
                     style = MaterialTheme.typography.bodyMedium,
                     color = if (temperatureUnit == TemperatureUnit.FAHRENHEIT)
                         Color.White else
-                        DarkBlue.copy(alpha = 0.6f)
+                        colorResource(R.color.dark_blue).copy(alpha = 0.6f)
                 )
             }
         }

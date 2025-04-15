@@ -1,6 +1,5 @@
 package com.polina.android.weather.app.presentation.main.composables
 
-import android.util.Log
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.pager.HorizontalPager
@@ -31,7 +30,6 @@ fun CityPager(
 
     LaunchedEffect(pagerState.settledPage) {
         if (pagerState.settledPage >= 0 && pagerState.settledPage < cities.size) {
-            Log.e("Pager State", "${pagerState.currentPage}")
             val newCity = cities[pagerState.settledPage]
             if (newCity.name != selectedCity.name) {
                 onCitySelected(newCity)
