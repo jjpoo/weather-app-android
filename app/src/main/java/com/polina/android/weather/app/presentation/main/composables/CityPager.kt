@@ -30,7 +30,7 @@ fun CityPager(
     )
 
     LaunchedEffect(pagerState.settledPage) {
-        if (pagerState.currentPage >= 0 && pagerState.currentPage < cities.size) {
+        if (pagerState.settledPage >= 0 && pagerState.settledPage < cities.size) {
             Log.e("Pager State", "${pagerState.currentPage}")
             val newCity = cities[pagerState.settledPage]
             if (newCity.name != selectedCity.name) {

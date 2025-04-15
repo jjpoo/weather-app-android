@@ -21,7 +21,7 @@ fun MainScreen(
                 header = state.weatherTitle,
                 cities = state.availableCities,
                 selectedCity = state.selectedCity,
-                weatherInfo = state.weatherInfo,
+                weatherInfo = requireNotNull(state.weatherInfo),
                 onCitySelected = onCitySelected,
                 onDetailsClick = onDetailsClick
             )

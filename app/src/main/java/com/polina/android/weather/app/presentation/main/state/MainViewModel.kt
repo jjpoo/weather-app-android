@@ -1,5 +1,6 @@
 package com.polina.android.weather.app.presentation.main.state
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.polina.android.weather.app.R
@@ -51,14 +52,13 @@ class MainViewModel @Inject constructor(
                 is Result.Success -> {
                     val weatherInfo = requireNotNull(result.data)
                     val weatherCondition = weatherInfo.description
-                    val dynamicHeader = getDynamicWeatherHeader(weatherCondition)
 
                     _state.value = MainUiState.Success(
                         weatherInfo = requireNotNull(result.data),
                         selectedCity = _selectedCity.value,
-                        availableCities = cities,
-                        weatherTitle = dynamicHeader
+                        availableCities = cities
                     )
+                    setDynamicWeatherHeader(weatherCondition)
                 }
 
                 is Result.Error -> {
@@ -70,17 +70,34 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun getDynamicWeatherHeader(weatherCondition: String): String {
-        return when {
-            weatherCondition.contains("clear", ignoreCase = true) -> "Sunny day!"
-            weatherCondition.contains("rain", ignoreCase = true) ||
-                    weatherCondition.contains("drizzle", ignoreCase = true) ||
-                    weatherCondition.contains("shower", ignoreCase = true) -> "Rainy day!"
+    private fun setDynamicWeatherHeader(weatherCondition: String) {
+        var currentState = _state.value
 
-            weatherCondition.contains("cloud", ignoreCase = true) ||
-                    weatherCondition.contains("overcast", ignoreCase = true) -> "Cloudy day"
+        if (currentState is MainUiState.Success) {
+            Log.e("New weather title : ", currentState.weatherTitle)
 
-            else -> "Just a day"
+            val newTitle = when {
+                weatherCondition.contains("clear", ignoreCase = true) -> {
+                    "Sunny day!"
+                }
+
+                weatherCondition.contains("rain", ignoreCase = true) ||
+                        weatherCondition.contains("drizzle", ignoreCase = true) ||
+                        weatherCondition.contains("shower", ignoreCase = true) -> {
+                    "Rainy day!"
+                }
+
+                weatherCondition.contains("cloud", ignoreCase = true) ||
+                        weatherCondition.contains("overcast", ignoreCase = true) -> {
+                    "Cloudy day"
+                }
+
+                else -> {
+                    "Just a day"
+                }
+            }
+
+            _state.value = currentState.copy(weatherTitle = newTitle)
         }
     }
 }

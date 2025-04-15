@@ -7,9 +7,9 @@ sealed class MainUiState {
     object Loading : MainUiState()
     data class Error(val message: String) : MainUiState()
     data class Success(
-        val weatherInfo: WeatherInfo,
-        val selectedCity: City,
-        val availableCities: List<City>,
+        val weatherInfo: WeatherInfo? = null,
+        val selectedCity: City = City("Warsaw", 0),
+        val availableCities: List<City> = listOf(),
         val weatherTitle: String = "Weather Forecast App"
     ) : MainUiState()
 }
